@@ -1,0 +1,9 @@
+apply from: rootProject.file('dependencies.gradle')
+
+subprojects {
+  apply from: '../repositories.gradle', to: repositories
+
+  buildscript {
+    scriptHandler -> apply from: '../repositories.gradle', to: scriptHandler
+  }
+}

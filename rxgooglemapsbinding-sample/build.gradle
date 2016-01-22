@@ -1,0 +1,24 @@
+buildscript {
+  dependencies {
+    classpath rootProject.ext.androidPlugin
+  }
+}
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  defaultConfig {
+    applicationId "org.aaronhe.rxgooglemapsbinding.sample"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+dependencies {
+  compile project(':rxgooglemapsbinding')
+  compile rootProject.ext.supportAppCompat
+}

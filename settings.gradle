@@ -1,0 +1,6 @@
+rootProject.name = 'rxgooglemapsbinding-root'
+
+include ':rxgooglemapsbinding'
+include ':rxgooglemapsbinding-kotlin'
+
+include ':rxgooglemapsbinding-sample'
