@@ -28,12 +28,12 @@ RxGoogleMaps.mapReady(mapView).flatMap(new Func1<GoogleMap, Observable<CameraPos
 ## Download
 Java bindings:
 ```groovy
-compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding:0.1.0'
+compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding:0.1.1'
 ```
 
 Kotlin bindings:
 ```groovy
-compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding-kotlin:0.1.0'
+compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding-kotlin:0.1.1'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
