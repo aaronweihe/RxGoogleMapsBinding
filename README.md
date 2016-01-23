@@ -25,6 +25,8 @@ RxGoogleMaps.mapReady(mapView).flatMap(new Func1<GoogleMap, Observable<CameraPos
 });
 ```
 
+See the [Javadoc](http://aaronhe42.github.io/RxGoogleMapsBinding/0.x/rxgooglemapsbinding/) for more.
+
 ## Download
 Java bindings:
 ```groovy
