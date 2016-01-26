@@ -11,8 +11,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.Polyline
+import org.aaronhe.rxgooglemapsbinding.MarkerDragEvent
 import org.aaronhe.rxgooglemapsbinding.RxGoogleMaps
 import rx.Observable
+import rx.functions.Func1
 
 /**
  * Create an observable which emits when `GoogleMap` is ready to use.
@@ -98,6 +100,33 @@ public inline fun GoogleMap.clicks(): Observable<LatLng> = RxGoogleMaps.clicks(t
  * to free this reference.
  */
 public inline fun GoogleMap.longClicks(): Observable<LatLng> = RxGoogleMaps.longClicks(this)
+
+/**
+ * Create an observable which emits on {@code map} marker click events.
+ * It assumes the subscriber is going to consume the marker click event.
+ * Otherwise, use [markerClicks(GoogleMap, Func1)].
+ * *Warning:* The created observable keeps a strong reference to {@code map}. Unsubscribe
+ * to free this reference.
+ */
+public inline fun GoogleMap.markerClicks(): Observable<Marker> = RxGoogleMaps.markerClicks(this)
+
+/**
+ * Create an observable which emits on {@code map} marker click events.
+ *
+ * *Warning:* The created observable keeps a strong reference to {@code map}. Unsubscribe
+ * to free this reference.
+ */
+public inline fun GoogleMap.markerClicks(handled: Func1<in Marker, Boolean>): Observable<Marker> =
+    RxGoogleMaps.markerClicks(this, handled)
+
+/**
+ * Create an observable which emits on {@code map} marker drag events.
+ *
+ * *Warning:* The created observable keeps a strong reference to {@code map}. Unsubscribe
+ * to free this reference.
+ */
+public inline fun GoogleMap.markerDrags(): Observable<MarkerDragEvent> =
+    RxGoogleMaps.markerDrags(this)
 
 /**
  * Create an observable which emits when My Location changes on a {@code map}.
