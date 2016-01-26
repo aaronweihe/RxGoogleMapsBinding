@@ -1,4 +1,6 @@
 # RxGoogleMapsBinding
+[![Build Status](https://travis-ci.org/aaronhe42/RxGoogleMapsBinding.svg?branch=master)](https://travis-ci.org/aaronhe42/RxGoogleMapsBinding)
+
 RxJava binding APIs for Google Maps.
 
 ## Usage
