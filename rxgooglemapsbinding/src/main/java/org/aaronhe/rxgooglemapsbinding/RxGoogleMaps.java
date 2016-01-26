@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.Polyline;
 import rx.Observable;
+import rx.functions.Func1;
 
 /**
  * Static factory methods for creating {@linkplain Observable observables} for {@link GoogleMap}.
@@ -128,6 +129,46 @@ public final class RxGoogleMaps {
    */
   public static Observable<LatLng> longClicks(GoogleMap map) {
     return Observable.create(new MapLongClickOnSubscribe(map));
+  }
+
+  /**
+   * Create an observable which emits on {@code map} marker click events.
+   * It assumes the subscriber is going to consume the marker click event.
+   * Otherwise, use {@link #markerClicks(GoogleMap, Func1)}.
+   * <p>
+   * <em>Warning:</em> The created observable keeps a strong reference to {@code map}. Unsubscribe
+   * to free this reference.
+   * </p>
+   */
+  public static Observable<Marker> markerClicks(GoogleMap map) {
+    return markerClicks(map, new Func1<Marker, Boolean>() {
+      @Override public Boolean call(Marker marker) {
+        return true;
+      }
+    });
+  }
+
+  /**
+   * Create an observable which emits on {@code map} marker click events.
+   * <p>
+   * <em>Warning:</em> The created observable keeps a strong reference to {@code map}. Unsubscribe
+   * to free this reference.
+   * </p>
+   */
+  public static Observable<Marker> markerClicks(GoogleMap map,
+      Func1<? super Marker, Boolean> handled) {
+    return Observable.create(new MarkerClickOnSubscribe(map, handled));
+  }
+
+  /**
+   * Create an observable which emits on {@code map} marker drag events.
+   * <p>
+   * <em>Warning:</em> The created observable keeps a strong reference to {@code map}. Unsubscribe
+   * to free this reference.
+   * </p>
+   */
+  public static Observable<MarkerDragEvent> markerDrags(GoogleMap map) {
+    return Observable.create(new MarkerDragOnSubscribe(map));
   }
 
   /**
