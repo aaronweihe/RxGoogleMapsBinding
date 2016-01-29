@@ -1,6 +1,6 @@
 ## Version 0.1.2 *(2016-01-28)*
 
-* Add `markerClicks` and `markerDrags` evens.
+* Add `markerClicks` and `markerDrags` events.
 
 ## Version 0.1.1 *(2016-01-22)*
 
