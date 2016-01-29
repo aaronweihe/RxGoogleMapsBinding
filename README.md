@@ -32,12 +32,12 @@ See the [Javadoc](http://aaronhe42.github.io/RxGoogleMapsBinding/0.x/rxgooglemap
 ## Download
 Java bindings:
 ```groovy
-compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding:0.1.1'
+compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding:0.1.2'
 ```
 
 Kotlin bindings:
 ```groovy
-compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding-kotlin:0.1.1'
+compile 'org.aaronhe.rxgooglemapsbinding:rxgooglemapsbinding-kotlin:0.1.2'
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
