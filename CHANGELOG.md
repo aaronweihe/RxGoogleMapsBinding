@@ -1,3 +1,7 @@
+## Version 0.1.2 *(2016-01-28)*
+
+* Add `markerClicks` and `markerDrags` evens.
+
 ## Version 0.1.1 *(2016-01-22)*
 
 * Fix: Add missing docs for StreetViewPanoramaView Kotlin binding
