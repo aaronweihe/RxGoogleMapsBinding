@@ -6,6 +6,8 @@ ext {
   buildToolsVersion = '23.0.2'
   supportLibVersion = '23.1.1'
 
+  ci = 'true'.equals(System.getenv('CI'))
+
   androidPlugin = 'com.android.tools.build:gradle:1.5.0'
   supportAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
   supportAnnotations = "com.android.support:support-annotations:$supportLibVersion"

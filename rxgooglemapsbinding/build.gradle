@@ -19,6 +19,10 @@ android {
     targetCompatibility JavaVersion.VERSION_1_7
   }
 
+  dexOptions {
+    preDexLibraries = !rootProject.ext.ci
+  }
+
   lintOptions {
     textReport true
     textOutput 'stdout'
