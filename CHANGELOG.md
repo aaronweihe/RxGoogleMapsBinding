@@ -1,3 +1,8 @@
+## Version 0.1.3 *(2016-02-03)*
+
+* Add non-null pre-condition check.
+* Add javadoc for `MarkerDragEvent`.
+
 ## Version 0.1.2 *(2016-01-28)*
 
 * Add `markerClicks` and `markerDrags` events.
