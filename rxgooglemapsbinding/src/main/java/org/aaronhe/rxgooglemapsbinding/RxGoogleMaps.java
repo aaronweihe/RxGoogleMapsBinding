@@ -2,6 +2,9 @@ package org.aaronhe.rxgooglemapsbinding;
 
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.support.annotation.CheckResult;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapFragment;
@@ -16,6 +19,8 @@ import com.google.android.gms.maps.model.Polyline;
 import rx.Observable;
 import rx.functions.Func1;
 
+import static org.aaronhe.rxgooglemapsbinding.Preconditions.checkNotNull;
+
 /**
  * Static factory methods for creating {@linkplain Observable observables} for {@link GoogleMap}.
  */
@@ -28,7 +33,9 @@ public final class RxGoogleMaps {
    * Unsubscribe to free this reference.
    * </p>
    */
-  public static Observable<GoogleMap> mapReady(MapView mapView) {
+  @CheckResult @NonNull
+  public static Observable<GoogleMap> mapReady(@NonNull MapView mapView) {
+    checkNotNull(mapView, "mapView == null");
     return Observable.create(new MapViewMapReadyOnSubscribe(mapView));
   }
 
@@ -39,7 +46,9 @@ public final class RxGoogleMaps {
    * Unsubscribe to free this reference.
    * </p>
    */
-  public static Observable<GoogleMap> mapReady(MapFragment mapFragment) {
+  @CheckResult @NonNull
+  public static Observable<GoogleMap> mapReady(@NonNull MapFragment mapFragment) {
+    checkNotNull(mapFragment, "mapFragment == null");
     return Observable.create(new MapFragmentMapReadyOnSubscribe(mapFragment));
   }
 
@@ -50,7 +59,9 @@ public final class RxGoogleMaps {
    * Unsubscribe to free this reference.
    * </p>
    */
-  public static Observable<GoogleMap> mapReady(SupportMapFragment mapFragment) {
+  @CheckResult @NonNull
+  public static Observable<GoogleMap> mapReady(@NonNull SupportMapFragment mapFragment) {
+    checkNotNull(mapFragment, "mapFragment == null");
     return Observable.create(new SupportMapFragmentReadyOnSubscribe(mapFragment));
   }
 
@@ -61,7 +72,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<CameraPosition> cameraPositionChanges(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<CameraPosition> cameraPositionChanges(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new CameraPositionChangeOnSubscribe(map));
   }
 
@@ -72,7 +85,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<GroundOverlay> groundOverlayClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<GroundOverlay> groundOverlayClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new GroundOverlayClickOnSubscribe(map));
   }
 
@@ -83,7 +98,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Marker> infoWindowClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Marker> infoWindowClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new InfoWindowClickOnSubscribe(map));
   }
 
@@ -94,7 +111,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Marker> infoWindowCloses(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Marker> infoWindowCloses(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new InfoWindowCloseOnSubscribe(map));
   }
 
@@ -105,7 +124,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Marker> infoWindowLongClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Marker> infoWindowLongClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new InfoWindowLongClickOnSubscribe(map));
   }
 
@@ -116,7 +137,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<LatLng> clicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<LatLng> clicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new MapClickOnSubscribe(map));
   }
 
@@ -127,7 +150,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<LatLng> longClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<LatLng> longClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new MapLongClickOnSubscribe(map));
   }
 
@@ -140,7 +165,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Marker> markerClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Marker> markerClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return markerClicks(map, new Func1<Marker, Boolean>() {
       @Override public Boolean call(Marker marker) {
         return true;
@@ -155,6 +182,7 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<Marker> markerClicks(GoogleMap map,
       Func1<? super Marker, Boolean> handled) {
     return Observable.create(new MarkerClickOnSubscribe(map, handled));
@@ -167,6 +195,7 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<MarkerDragEvent> markerDrags(GoogleMap map) {
     return Observable.create(new MarkerDragOnSubscribe(map));
   }
@@ -183,7 +212,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  @Deprecated public static Observable<Location> myLocationChanges(GoogleMap map) {
+  @CheckResult @NonNull
+  @Deprecated public static Observable<Location> myLocationChanges(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new MyLocationChangeOnSubscribe(map));
   }
 
@@ -194,7 +225,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Polygon> polygonClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Polygon> polygonClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new PolygonClickOnSubscribe(map));
   }
 
@@ -205,7 +238,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Polyline> polylineClicks(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Polyline> polylineClicks(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return Observable.create(new PolyLineClickOnSubscribe(map));
   }
 
@@ -216,7 +251,9 @@ public final class RxGoogleMaps {
    * to free this reference.
    * </p>
    */
-  public static Observable<Bitmap> snapShotReady(GoogleMap map) {
+  @CheckResult @NonNull
+  public static Observable<Bitmap> snapShotReady(@NonNull GoogleMap map) {
+    checkNotNull(map, "map == null");
     return snapShotReady(map, null);
   }
 
@@ -230,7 +267,9 @@ public final class RxGoogleMaps {
    * {@code bitmap}. Unsubscribe to free this reference.
    * </p>
    */
-  public static Observable<Bitmap> snapShotReady(GoogleMap map, Bitmap bitmap) {
+  @CheckResult @NonNull
+  public static Observable<Bitmap> snapShotReady(@NonNull GoogleMap map, @Nullable Bitmap bitmap) {
+    checkNotNull(map, "map == null");
     return Observable.create(new SnapshotReadyOnSubscribe(map, bitmap));
   }
 
@@ -241,7 +280,9 @@ public final class RxGoogleMaps {
    * Unsubscribe to free this reference.
    * </p>
    */
-  public static Observable<Location> locationSourceLocationChanges(LocationSource source) {
+  @CheckResult @NonNull
+  public static Observable<Location> locationSourceLocationChanges(@NonNull LocationSource source) {
+    checkNotNull(source, "source == null");
     return Observable.create(new LocationChangeOnSubscribe(source));
   }
 

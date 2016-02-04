@@ -1,5 +1,7 @@
 package org.aaronhe.rxgooglemapsbinding;
 
+import android.support.annotation.CheckResult;
+import android.support.annotation.NonNull;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.StreetViewPanoramaView;
@@ -8,6 +10,8 @@ import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.google.android.gms.maps.model.StreetViewPanoramaOrientation;
 import rx.Observable;
+
+import static org.aaronhe.rxgooglemapsbinding.Preconditions.checkNotNull;
 
 /**
  * Static factory methods for creating {@linkplain Observable observables} for {@link
@@ -22,8 +26,10 @@ public final class RxStreetViewPanorama {
    * streetViewPanoramaView}. Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanorama> streetViewPanoramaReady(
-      StreetViewPanoramaView streetViewPanoramaView) {
+      @NonNull StreetViewPanoramaView streetViewPanoramaView) {
+    checkNotNull(streetViewPanoramaView, "streetViewPanoramaView == null");
     return Observable.create(
         new StreetViewPanoramaViewPanoramaReadyOnSubscribe(streetViewPanoramaView));
   }
@@ -35,8 +41,10 @@ public final class RxStreetViewPanorama {
    * Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanorama> streetViewPanoramaReady(
-      StreetViewPanoramaFragment fragment) {
+      @NonNull StreetViewPanoramaFragment fragment) {
+    checkNotNull(fragment, "fragment == null");
     return Observable.create(new StreetViewPanoramaFragmentPanoramaReadyOnSubscribe(fragment));
   }
 
@@ -47,8 +55,10 @@ public final class RxStreetViewPanorama {
    * Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanorama> streetViewPanoramaReady(
-      SupportStreetViewPanoramaFragment fragment) {
+      @NonNull SupportStreetViewPanoramaFragment fragment) {
+    checkNotNull(fragment, "fragment == null");
     return Observable.create(
         new StreetViewPanoramaSupportFragmentPanoramaReadyOnSubscribe(fragment));
   }
@@ -60,8 +70,10 @@ public final class RxStreetViewPanorama {
    * streetViewPanorama}. Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanoramaCamera> streetViewPanoramaCameraChanges(
-      StreetViewPanorama streetViewPanorama) {
+      @NonNull StreetViewPanorama streetViewPanorama) {
+    checkNotNull(streetViewPanorama, "streetViewPanorama == null");
     return Observable.create(new StreetViewPanoramaCameraChangeOnSubscribe(streetViewPanorama));
   }
 
@@ -72,8 +84,10 @@ public final class RxStreetViewPanorama {
    * streetViewPanorama}. Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanoramaLocation> streetViewPanoramaChanges(
-      StreetViewPanorama streetViewPanorama) {
+      @NonNull StreetViewPanorama streetViewPanorama) {
+    checkNotNull(streetViewPanorama, "streetViewPanorama == null");
     return Observable.create(new StreetViewPanoramaChangeOnSubscribe(streetViewPanorama));
   }
 
@@ -84,8 +98,10 @@ public final class RxStreetViewPanorama {
    * streetViewPanorama}. Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanoramaOrientation> streetViewPanoramaClicks(
       StreetViewPanorama streetViewPanorama) {
+    checkNotNull(streetViewPanorama, "streetViewPanorama == null");
     return Observable.create(new StreetViewPanoramaClickOnSubscribe(streetViewPanorama));
   }
 
@@ -96,8 +112,10 @@ public final class RxStreetViewPanorama {
    * streetViewPanorama}. Unsubscribe to free this reference.
    * </p>
    */
+  @CheckResult @NonNull
   public static Observable<StreetViewPanoramaOrientation> streetViewPanoramaLongClicks(
-      StreetViewPanorama streetViewPanorama) {
+      @NonNull StreetViewPanorama streetViewPanorama) {
+    checkNotNull(streetViewPanorama, "streetViewPanorama == null");
     return Observable.create(new StreetViewPanoramaLongClickOnSubscribe(streetViewPanorama));
   }
 

@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+  compile rootProject.ext.supportAnnotations
   compile rootProject.ext.rxJava
   compile rootProject.ext.rxAndroid
   compile rootProject.ext.googleMaps

@@ -4,9 +4,11 @@ ext {
   compileSdkVersion = 23
   targetSdkVersion = 23
   buildToolsVersion = '23.0.2'
+  supportLibVersion = '23.1.1'
 
   androidPlugin = 'com.android.tools.build:gradle:1.5.0'
-  supportAppCompat = 'com.android.support:appcompat-v7:23.1.1'
+  supportAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
+  supportAnnotations = "com.android.support:support-annotations:$supportLibVersion"
   rxJava = 'io.reactivex:rxjava:1.1.0'
   rxAndroid = 'io.reactivex:rxandroid:1.1.0'
   googleMaps = 'com.google.android.gms:play-services-maps:8.4.0'

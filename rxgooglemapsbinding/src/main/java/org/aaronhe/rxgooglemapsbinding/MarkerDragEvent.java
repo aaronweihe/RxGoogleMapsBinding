@@ -1,8 +1,12 @@
 package org.aaronhe.rxgooglemapsbinding;
 
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import com.google.android.gms.maps.model.Marker;
 
+/**
+ * A drag event on a marker.
+ */
 public final class MarkerDragEvent {
   public enum Kind {
     START, DRAG, END
@@ -11,6 +15,7 @@ public final class MarkerDragEvent {
   private final Kind kind;
   private final Marker marker;
 
+  @CheckResult @NonNull
   public static MarkerDragEvent create(@NonNull Marker marker, @NonNull Kind kind) {
     return new MarkerDragEvent(marker, kind);
   }
@@ -20,7 +25,8 @@ public final class MarkerDragEvent {
     this.kind = kind;
   }
 
-  @NonNull public Kind getKind() {
+  @NonNull
+  public Kind getKind() {
     return kind;
   }
 
